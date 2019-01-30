@@ -1,0 +1,46 @@
+vimtutor == 30 mins tutorial
+
+
+/* Normal Mode */
+h== Left					k
+j == Down				h		l
+k == Up						j
+l == Right
+<number (eg 16)> + h/j/k/l == move that times to that direction
+/{pattern} == searches the given pattern
+
+/* How to enter Insert Mode */
+i == insert text before cursor
+I == insert in the beggining of the line
+
+a == append text after cursor
+A == append text to the end of the line
+
+o == insert new line bellow and go into insert mode
+O == insert new line above  and go into insert mode
+esc == Normal Mode (Typing commands)
+
+u == undo
+CTRL+R == redo
+
+
+/* Command Mode */
+: == enter command mode
+:w == save
+:x == save && quit
+:q == just quit (fails if changes have been done)
+:q! == quit and do not save
+:/{pattern} == searches the given pattern
+
+
+~~~ Convert text files from Windows (DOS) -> Unix and vice-verca ~~~
+:set ff=unix
+:set ff=dos
+
+
+
+
+
+
+
+

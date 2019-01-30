@@ -1,0 +1,28 @@
+~~~ Commands ~~~
+lspci 							---> shows PCI devices currently connected
+lscpu 							---> Displays info about the CPU
+lsmod 							---> Shows Linux Kernerl's modulos (also known as Drivers in windows)
+lsusb 							---> Shows USB conneceted devices
+uname 							---> system info (kernel version, etc.)
+
+apt-get install <package> 				---> installs specified package
+apt-get update							---> Updates package list
+apt-get upgrade							---> Upgrades packages
+apt-cache search <package> 				---> searches specified package in the download servers
+apt-get purge <package>					---> completely removes specified package
+
+dpkg -i <deb_package (.deb format)			---> (i==install) Installs a .deb package from the data center repository
+dpkg -s <deb_packaged> 					---> (s==status) Checks weather the specified .deb package is installed in my PC
+
+chmod {who} {permissions} {filename}			---> e.g. chmod u=rwx,g=rx,o=r myfile
+
+which <cmd>		---> prints the path to the executable command
+
+~~~ Operators ~~~
+<cmd_1> | <cmd_2> | ... | <cmd_n>	----> Redirects the stdout of cmd_1 to the stdin of cmd_2 and so on.
+
+cmd < {file}	---> The cmd has as stdin  the given file.
+cmd > {file}	---> The cmd has as stdout the given file.
+cmd < {file_1} > {file_2}	---> Combination of the two above operators.
+
+

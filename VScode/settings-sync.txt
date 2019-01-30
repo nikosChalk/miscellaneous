@@ -1,0 +1,13 @@
+In order to sync settings download the "settings sync" plugin
+https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
+
+Follow the steps and use the Gist ID: 48b2d2509bb867a40e3c080a8983823b
+Also toggle auto-download on startup
+And  toggle auto-upload on change
+
+
+TL;DR: 
+1.) Shift + Alt + D
+2.) Paste Gist ID: 48b2d2509bb867a40e3c080a8983823b
+3.) Press Enter
+4.) Ctrl + P ---> ">sync" ---> "Advanced" ---> toggle auto-download and auto-upload

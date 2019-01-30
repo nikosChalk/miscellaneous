@@ -1,0 +1,9 @@
+1.) Enter the bash command: 
+	sudo vim /etc/profile
+	and add the following lines:
+		i.)  export VAR="path that you found"
+		ii.) export PATH=$VAR/bin:$PATH
+
+2.) Enter the bash command:
+	source /etc/profile
+	to apply changes immediately

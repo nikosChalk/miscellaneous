@@ -1,0 +1,54 @@
+git add <file/directory>	---> adds the given file for commitment
+git add -A					---> Adds all the fils of the working tree for commit
+git commit -m <message> 	---> Commits the files which were added through the git add command and also adds a small comment.
+git commit					---> Commits the files which were added through the git add. Also an editor will appear where:
+									The first line is used as a Title for your changes.
+									The rest lines are a detailed description of your changes
+git status					---> shows which files have been added to be commited, and which are not tracked
+
+git pull origin master		---> Gets the files from the master branch to the local machine
+git push origin master		---> pushes the local (commited) files from the local machine to the master branch
+
+git branch takhs			---> Creates a new branch with name "takhs" on the local machine. To add this branch to GitHub, use "git commit" & "git push" command
+git branch					---> Lists all available local branches. The branch with the * (asterisk) indicates the branch that you are working on.
+git branch -a				---> List all available local AND remote branches. The branch with the * (asterisk) indicates the branch that you are working on.
+git checkout takhs			---> Changes the branch that you are currently working on to takhs
+
+git merge takhs				---> Merges to your current branch (e.g. master) the branch takhs. Branch takhs is not deleted.
+git branch --merged			---> Tells you what merges have occured
+
+git branch -d takhs				---> Deletes this branch
+git push origin --delete takhs	---> Tells GitHub to delete this branch.
+
+git rm --cached <file>			---> Removes a file from tracking it, keeping it only in the local machine.
+git rm --cached -r <folder>		---> Same as above, except that it does it recusrively for a folder.
+
+What is "origin"?				---> origin is an alias on your system for a particular remote repository.
+git remote -v					---> Lists all the aliases that you have for remote repositories.
+git-fsck						---> Verifies the connectivity and validity of the objects in the database
+
+git diff <local branch> <remote>/<remote branch> ---> Lists the differences between your local branch and the remote branch.
+	e.g. git diff master origin/master
+	
+what is "HEAD"?				---> HEAD is a pointer which points to your current branch.
+what is the "working tree"	---> Your working directory
+
+~~~~~~ How to Work with Git ~~~~~~
+
+1.) Decide in which branch you want to work. Let that branch be X
+2.) git checkout X		---> Change to the branch that you want to work
+3.) git pull origin X	---> Get what other developers have contributed while you were away
+4.) Do your work
+5.) git status			---> It will show which files have not been staged or are untracked (modified or newly created)
+6.) git add <files>		---> Add the files that wish for commit
+7.) git commit -m "..."	---> Commit your changes to your local branch
+5.) git push origin X	---> Let other developers know that this branch has been changed by uploading your modifications
+
+
+~~~~~~~~~~~~~~~~~~~~~
+
+Git has 3 stages that your files can reside in:
+
+1.) Commited. 	---> The file has been safely saved in your LOCAL repository.
+2.) Modified. 	---> The file has been modified, but not commited.
+3.) Staged (indexed).		---> You have marked this MODIFIED file to be COMMITED in the next "git commit" that you do.

@@ -1,0 +1,23 @@
+~~~ UEFI ~~~
+The Unified Extensible Firmware Interface (UEFI or EFI) is a specification that defines a software interface between an operating system and platform firmware. UEFI is meant to replace the Basic Input/Output System (BIOS) firmware interface. 
+
+~~~ BIOS ~~~
+The BIOS software is built into the PC, stored on a non-volatile ROM chip on the motherboard, and is the first code run by a PC when powered on ('boot firmware'). The primary function of the BIOS is to load and start an operating system.
+
+~~~ Booting (up) or Bootstrapping ~~~
+The BIOS locates boot loader software held on a peripheral device (designated as a 'boot device'), such as a hard disk or a CD/DVD, and loads and executes that software, giving it control of the PC. This process is known as booting, or booting up,
+
+~~~ BootLoader or BootStrap Loader ~~~
+Bootloader (or bootstrap loader) is a program that loads the operating system into the computer's memory and set it into execution. When a computer is powered-up or restarted, the basic input/output system (BIOS) performs some initial tests, and then transfers control to the Bootloader. 
+
+~~~ EFI System Partition (ESP) ~~~~
+ESP (EFI System Partition) contains the boot loader programs for all installed operating systems (which are contained in other partitions on the same or other storage device), device driver files for devices present in a computer that are used by the firmware at boot time, system utility programs that are intended to be run before an operating system is booted, and data files such as error logs.
+
+~~~ Master Boot Record (MBR) ~~~
+A Master Boot Record (MBR) is a special type of boot sector at the very beginning of partitioned computer mass storage devices. The MBR holds the information on how the logical partitions, containing file systems, are organized on that medium. It identifies how and where an operating system is located, so that it can be bootstrapped.
+
+~~~ Chain Loading ~~~
+Often, multiple-stage boot loaders are used, during which several programs of increasing complexity sequentially load one after the other in a process called chain loading.
+
+~~~ Embedded (Enswmatwmenos) ~~~
+Embedded systems are computer systems which are an internal component of a product (embedded within a product) for a specific, usually limited, purpose which includes control, reconfigurability, or translation

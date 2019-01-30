@@ -1,0 +1,7 @@
+~~~rvalue:
+An rvalue reference behaves just like an lvalue reference except that it can bind to a temporary (an rvalue), whereas you can not bind a (non const) lvalue reference to an rvalue. 
+
+~~~ move(): 
+move() gives its target the value of its argument, but is not obliged to preserve the value of its source
+In other words, move is a potentially destructive read. 
+

@@ -1,0 +1,4 @@
+svn propset svn:ignore -RF .gitignore . [dot for current dir]
+svn propset svn:ignore .git . [dot for current dir]
+svn add --force * --auto-props --parents --depth infinity -q	//add all files that are not to be ignored recursively
+svn status | grep ^! | awk '{print $2}' | xargs svn rm			//remove missing files
