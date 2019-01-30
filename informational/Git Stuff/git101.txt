@@ -1,3 +1,10 @@
+~~~ How to make git remember you for remote server (e.g. github) ~~~
+git config credential.helper store
+You can also use the "--global" flag, for global configuration.
+The command above howver stores your username and password in plaintext
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 git add <file/directory>	---> adds the given file for commitment
 git add -A					---> Adds all the fils of the working tree for commit
 git commit -m <message> 	---> Commits the files which were added through the git add command and also adds a small comment.
