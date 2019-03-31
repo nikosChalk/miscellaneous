@@ -14,19 +14,13 @@ echo
 echo "${LIGHT_GREEN}Starting ssh to csd.uoc.gr ... ${NC}"
 
 if [ "$#" -lt "$params" ]; then
-	echo "${ORANGE}Gate parameter omitted. Default gate is: ${BLUE}$gate2${NC}"
-	gate=$gate2
+	machine="kiwi"
+	echo "${ORANGE}Machine parameter omitted. Default machine is: ${BLUE}$machine${NC}"
 else
-	gate=$1
-fi
-
-
-if [ "$gate" != "$gate1" ] && [ "$gate" != "$gate2" ]; then
-	echo "Invalid parameter. Valid parameters are only \"$gate1\" and \"$gate2\""
-	exit 2
+	machine=$1
 fi
 
 old_term=$TERM
 TERM=xterm-color
-ssh csd3638@$gate.csd.uoc.gr -o HostKeyAlgorithms=+ssh-dss -o PubKeyAcceptedKeyTypes=+dsa
+ssh csd3638@$machine.csd.uoc.gr #-o HostKeyAlgorithms=+ssh-dss -o PubKeyAcceptedKeyTypes=+dsa
 TERM=$old_term
