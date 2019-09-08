@@ -11,5 +11,6 @@ echo "${LIGHT_GREEN}Starting ssh to 139.91.70.66 (pagwto) on port 3215 ... ${NC}
 
 old_term=$TERM
 #TERM=xterm-color
-ssh nikoschalk@139.91.70.66 -p 3215
+#ssh nikoschalk@139.91.70.66 -p 3215
+ssh nikoschalk@139.91.230.4 -p 3215
 #TERM=$old_term
