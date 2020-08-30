@@ -1,0 +1,3 @@
+https://developer.gnome.org/NetworkManager/stable/nmcli.html
+https://developer.gnome.org/NetworkManager/stable/nm-settings.html
+https://gist.github.com/narate/d3f001c97e1c981a59f94cd76f041140

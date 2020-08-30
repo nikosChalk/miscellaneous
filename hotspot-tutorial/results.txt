@@ -1,0 +1,5 @@
+nmcli worked in Debian 9 (Stretch). Mobile phone connected
+
+create_ap worked in Debian 9 (Stretch) but Alexa could not connect. Mobile phone was able to connect
+
+hostapd. I did not manage to make it work for creating a HotSpot (Both the network-manager service and the hostapd daemon were trying to manage the connections thus failing)

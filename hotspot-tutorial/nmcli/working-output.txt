@@ -1,0 +1,116 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~ Command Used: nmcli con show AlexaHotSpot ~~~
+
+
+
+
+connection.id:                          AlexaHotSpot
+connection.uuid:                        4692666e-47ca-47da-a34c-a86d8335864c
+connection.stable-id:                   --
+connection.interface-name:              wlp5s0
+connection.type:                        802-11-wireless
+connection.autoconnect:                 yes
+connection.autoconnect-priority:        0
+connection.autoconnect-retries:         -1 (default)
+connection.timestamp:                   1561903569
+connection.read-only:                   no
+connection.permissions:                 
+connection.zone:                        --
+connection.master:                      --
+connection.slave-type:                  --
+connection.autoconnect-slaves:          -1 (default)
+connection.secondaries:                 
+connection.gateway-ping-timeout:        0
+connection.metered:                     unknown
+connection.lldp:                        -1 (default)
+802-11-wireless.ssid:                   nikoschalk-Alexa-HotSpot
+802-11-wireless.mode:                   ap
+802-11-wireless.band:                   bg
+802-11-wireless.channel:                1
+802-11-wireless.bssid:                  --
+802-11-wireless.rate:                   0
+802-11-wireless.tx-power:               0
+802-11-wireless.mac-address:            F4:06:69:54:2F:31
+802-11-wireless.cloned-mac-address:     --
+802-11-wireless.generate-mac-address-mask:--
+802-11-wireless.mac-address-blacklist:  
+802-11-wireless.mac-address-randomization:default
+802-11-wireless.mtu:                    auto
+802-11-wireless.seen-bssids:            F4:06:69:54:2F:31
+802-11-wireless.hidden:                 no
+802-11-wireless.powersave:              default (0)
+802-11-wireless-security.key-mgmt:      wpa-psk
+802-11-wireless-security.wep-tx-keyidx: 0
+802-11-wireless-security.auth-alg:      --
+802-11-wireless-security.proto:         wpa
+802-11-wireless-security.pairwise:      tkip,ccmp
+802-11-wireless-security.group:         tkip,ccmp
+802-11-wireless-security.leap-username: --
+802-11-wireless-security.wep-key0:      <hidden>
+802-11-wireless-security.wep-key1:      <hidden>
+802-11-wireless-security.wep-key2:      <hidden>
+802-11-wireless-security.wep-key3:      <hidden>
+802-11-wireless-security.wep-key-flags: 0 (none)
+802-11-wireless-security.wep-key-type:  0 (unknown)
+802-11-wireless-security.psk:           <hidden>
+802-11-wireless-security.psk-flags:     0 (none)
+802-11-wireless-security.leap-password: <hidden>
+802-11-wireless-security.leap-password-flags:0 (none)
+ipv4.method:                            shared
+ipv4.dns:                               
+ipv4.dns-search:                        
+ipv4.dns-options:                       (default)
+ipv4.dns-priority:                      0
+ipv4.addresses:                         
+ipv4.gateway:                           --
+ipv4.routes:                            
+ipv4.route-metric:                      -1
+ipv4.ignore-auto-routes:                no
+ipv4.ignore-auto-dns:                   no
+ipv4.dhcp-client-id:                    --
+ipv4.dhcp-timeout:                      0
+ipv4.dhcp-send-hostname:                yes
+ipv4.dhcp-hostname:                     --
+ipv4.dhcp-fqdn:                         --
+ipv4.never-default:                     no
+ipv4.may-fail:                          yes
+ipv4.dad-timeout:                       -1 (default)
+ipv6.method:                            auto
+ipv6.dns:                               
+ipv6.dns-search:                        
+ipv6.dns-options:                       (default)
+ipv6.dns-priority:                      0
+ipv6.addresses:                         
+ipv6.gateway:                           --
+ipv6.routes:                            
+ipv6.route-metric:                      -1
+ipv6.ignore-auto-routes:                no
+ipv6.ignore-auto-dns:                   no
+ipv6.never-default:                     no
+ipv6.may-fail:                          yes
+ipv6.ip6-privacy:                       -1 (unknown)
+ipv6.addr-gen-mode:                     stable-privacy
+ipv6.dhcp-send-hostname:                yes
+ipv6.dhcp-hostname:                     --
+ipv6.token:                             --
+proxy.method:                           none
+proxy.browser-only:                     no
+proxy.pac-url:                          --
+proxy.pac-script:                       --
+GENERAL.NAME:                           AlexaHotSpot
+GENERAL.UUID:                           4692666e-47ca-47da-a34c-a86d8335864c
+GENERAL.DEVICES:                        wlp5s0
+GENERAL.STATE:                          activated
+GENERAL.DEFAULT:                        no
+GENERAL.DEFAULT6:                       no
+GENERAL.VPN:                            no
+GENERAL.ZONE:                           --
+GENERAL.DBUS-PATH:                      /org/freedesktop/NetworkManager/ActiveConnection/7
+GENERAL.CON-PATH:                       /org/freedesktop/NetworkManager/Settings/2
+GENERAL.SPEC-OBJECT:                    /org/freedesktop/NetworkManager/AccessPoint/38
+GENERAL.MASTER-PATH:                    --
+IP4.ADDRESS[1]:                         10.42.0.1/24
+IP4.GATEWAY:                            --
+IP6.ADDRESS[1]:                         fe80::749d:a06f:d95e:e3da/64
+IP6.GATEWAY:                            --
