@@ -1,8 +1,33 @@
 #!/bin/bash
-sudo apt-get update
-sudo apt-get install vim git gcc g++ cmake make gedit ssh gdb tmux xclip python3 curl wget
-sudo apt-get install gnome-tweaks gnome-tweak-tool
+#
+# Run: nikos@laptop:~$ ./fresh-start.sh
+# Do NOT run with sudo
+#
 
+sudo apt-get update
+sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla
+sudo apt-get install -y gnome-tweaks gnome-tweak-tool
+sudo apt-get install -y php php-cgi php-cli php-common php-mysql
+sudo apt-get install -y binwalk nmap valgrind
+
+# wireshark
+sudo apt-get install -y wireshark # Select that non-superusers should be able to capture packets
+sudo adduser $USER wireshark
+
+# Docker
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+echo 'Expected fingerprint: 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88'
+sudo apt-key fingerprint 0EBFCD88
+echo 'Press ENTER to continue or ^C to break'
+read
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+sudo apt-get update
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io
+sudo docker run hello-world	# Verify that docker is correctly installed
+
+# miscellaneous
 cd ~
 git clone https://github.com/nikosChalk/miscellaneous.git
 
@@ -12,16 +37,24 @@ cp miscellaneous/tmux/.tmux.conf.v3.0a .tmux.conf
 cp miscellaneous/gdb/.gdbinit .
 cp miscellaneous/bin/* bin/
 
-sudo snap install --classic code
 sudo snap install --classic slack
+sudo snap install --classic skype
 sudo snap install discord
+sudo snap install --classic code
 sudo snap install clion --classic
+sudo snap install phpstorm --classic
+sudo snap install intellij-idea-ultimate --classic
+sudo snap install pycharm-professional --classic
+sudo snap install webstorm --classic
 
 echo '' >> .bashrc
 echo '##### Automatic nikos installer #####' >> .bashrc
 
 #pdfmerge
 echo 'pdfmerge() { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/prepre ss -sOutputFile=$@ ; }' >> .bashrc
+
+#urlencode
+echo 'alias urlencode='"'"'python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))"'"'" >> .bashrc 
 
 #preferred editor
 echo '' >> .bashrc
@@ -58,7 +91,7 @@ pyenv global  3.8.5
 pip install --upgrade pip
 
 #pwntools
-sudo apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
+sudo apt-get -y install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
 pip install --upgrade pwntools
 
 #wheel
@@ -67,6 +100,10 @@ pip install wheel
 #ropper
 pip install capstone filebytes keystone-engine
 pip install ropper
+
+# pycryptodome, hashpumpy
+pip install pycryptodome hashpumpy
+
 
 #gdb-gef
 pip install capstone unicorn keystone-engine ropper
@@ -89,6 +126,7 @@ git clone https://github.com/slimm609/checksec.sh.git ~/bin/binaries/checksec
 ln -s $HOME/bin/binaries/checksec/checksec $HOME/bin/checksec
 
 #ghidra
+# Install ghidra in $HOME/bin/ghidra
 #ln -s $HOME/bin/binaries/ghidra_9.1.2_PUBLIC/ghidraRun $HOME/bin/ghidra
 
 
@@ -100,3 +138,12 @@ ln -s $HOME/bin/binaries/checksec/checksec $HOME/bin/checksec
 #3.) Press Enter
 #4.) Ctrl + P ---> ">sync" ---> "Advanced" ---> toggle auto-download and auto-upload
 
+#Burp
+sudo apt-get install -y libcanberra-gtk-module
+# Install Burp now
+# Export Certificate in DER format: ~/.BurpSuite/burp-ca.der
+
+# FireFox pen-tester profile
+# Addon: FoxyProxy
+# Addon: Cookie Quick Manager
+# Import CA certificate: ~/.BurpSuite/burp-ca.der 
