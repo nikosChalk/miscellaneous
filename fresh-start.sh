@@ -4,11 +4,24 @@
 # Do NOT run with sudo
 #
 
+# Fix dual boot time issue: https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot
+sudo timedatectl set-local-rtc 1
+
 sudo apt-get update
-sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla
-sudo apt-get install -y gnome-tweaks gnome-tweak-tool
-sudo apt-get install -y php php-cgi php-cli php-common php-mysql
+sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla net-tools perl
+sudo apt-get install -y binutils file wget rpm2cpio cpio zstd
+sudo apt-get install -y gnome-tweaks gnome-tweak-tool cpu-checker
+sudo apt-get install -y php php-cgi php-cli php-common php-mysql mysql-server
 sudo apt-get install -y binwalk nmap valgrind
+sudo apt-get install -y qemu virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso
+
+#kvm
+#FIXME: Ensure that `kvm-ok` outputs: "INFO: /dev/kvm exists\nKVM acceleration can be used"
+sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+sudo adduser `id -un` libvirt
+sudo adduser `id -un` kvm
+virsh list --all #FIXME: Verify the output of this command which indicates if everything was successful
+sudo apt-get install -y virt-manager
 
 # wireshark
 sudo apt-get install -y wireshark # Select that non-superusers should be able to capture packets
@@ -89,6 +102,8 @@ source ~/.bashrc
 pyenv install 3.8.5
 pyenv global  3.8.5
 pip install --upgrade pip
+pip install ipython pylint rope
+pip install matplotlib
 
 #pwntools
 sudo apt-get -y install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
@@ -104,6 +119,14 @@ pip install ropper
 # pycryptodome, hashpumpy
 pip install pycryptodome hashpumpy
 
+# angr - https://angr.io/
+pyenv virtualenv angr
+pyenv activate angr
+pip install angr
+pip install angr-management
+pip install pylint
+pip install --upgrade pip
+pyenv deactivate
 
 #gdb-gef
 pip install capstone unicorn keystone-engine ropper
@@ -118,6 +141,21 @@ cd ~/bin/binaries/pwndbg
 ./setup.sh --with-python=$HOME/.pyenv/shims/python
 cd -
 
+# hyper & hyperpwn
+cd ~/Downloads
+wget https://releases.hyper.is/download/deb hyper.deb
+sudo apt-get -y install gconf-service gconf-service-backend gconf2 gconf2-common libappindicator1 libdbusmenu-gtk4 libgconf-2-4
+sudo dpkg -i hyper.deb
+hyper i hyperinator
+hyper i hyperpwn
+cd -
+
+#libc-database
+git clone https://github.com/niklasb/libc-database.git ~/bin/binaries/libc-database
+cd ~/bin/binaries/libc-database
+./get all
+cd -
+
 #sqlmap
 git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git ~/bin/binaries/sqlmap
 
@@ -126,6 +164,7 @@ git clone https://github.com/slimm609/checksec.sh.git ~/bin/binaries/checksec
 ln -s $HOME/bin/binaries/checksec/checksec $HOME/bin/checksec
 
 #ghidra
+sudo apt-get install -y default-jre default-jdk
 # Install ghidra in $HOME/bin/ghidra
 #ln -s $HOME/bin/binaries/ghidra_9.1.2_PUBLIC/ghidraRun $HOME/bin/ghidra
 
