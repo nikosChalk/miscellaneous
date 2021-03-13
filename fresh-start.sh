@@ -4,12 +4,16 @@
 # Do NOT run with sudo
 #
 
+# Stop on failure
+set -e
+
 # Fix dual boot time issue: https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot
 sudo timedatectl set-local-rtc 1
 
 sudo apt-get update
-sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla net-tools perl
-sudo apt-get install -y binutils file wget rpm2cpio cpio zstd
+sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla net-tools perl libc6-dbg
+sudo apt-get install -y binutils file wget rpm2cpio cpio zstd build-essential
+sudo apt-get install -y ruby rubygems build-essential
 sudo apt-get install -y gnome-tweaks gnome-tweak-tool cpu-checker
 sudo apt-get install -y php php-cgi php-cli php-common php-mysql mysql-server
 sudo apt-get install -y binwalk nmap valgrind
@@ -127,6 +131,9 @@ pip install angr-management
 pip install pylint
 pip install --upgrade pip
 pyenv deactivate
+
+# one_gadget
+gem install one_gadget
 
 #gdb-gef
 pip install capstone unicorn keystone-engine ropper
