@@ -48,11 +48,13 @@ sudo docker run hello-world	# Verify that docker is correctly installed
 cd ~
 git clone https://github.com/nikosChalk/miscellaneous.git
 
-mkdir -p bin/binaries
+mkdir -p bin
+cp miscellaneous/bin/binaries bin/binaries
 cp miscellaneous/vim/.vimrc .
 cp miscellaneous/tmux/.tmux.conf.v3.0a .tmux.conf
 cp miscellaneous/gdb/.gdbinit .
 cp miscellaneous/bin/* bin/
+ln -s $HOME/bin/binaries/remove-blank-pages.sh $HOME/bin/pdf-rm-blanks
 
 sudo snap install --classic slack
 sudo snap install --classic skype
