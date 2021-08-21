@@ -11,7 +11,7 @@ set -e
 sudo timedatectl set-local-rtc 1
 
 sudo apt-get update
-sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla net-tools perl libc6-dbg
+sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla net-tools perl libc6-dbg ctags yara hydra hydra-gtk
 sudo apt-get install -y binutils file wget rpm2cpio cpio zstd build-essential
 sudo apt-get install -y ruby rubygems build-essential
 sudo apt-get install -y gnome-tweaks gnome-tweak-tool cpu-checker

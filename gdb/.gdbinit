@@ -23,6 +23,7 @@ document init-gef
 Initializes GEF (GDB Enhanced Features)
 end
 
+set history save
 set disassembly-flavor intel
 set follow-fork-mode child
 
