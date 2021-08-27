@@ -19,6 +19,13 @@ sudo apt-get install -y php php-cgi php-cli php-common php-mysql mysql-server
 sudo apt-get install -y binwalk nmap valgrind
 sudo apt-get install -y qemu virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso
 
+#sticky notes
+# http://www.webupd8.org/2012/11/pin-notes-on-your-desktop-with.html
+# https://askubuntu.com/questions/245019/what-alternatives-for-sticky-notes-are-available
+sudo add-apt-repository ppa:umang/indicator-stickynotes
+sudo apt-get update
+sudo apt-get install indicator-stickynotes
+
 #kvm
 #FIXME: Ensure that `kvm-ok` outputs: "INFO: /dev/kvm exists\nKVM acceleration can be used"
 sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
@@ -49,7 +56,7 @@ cd ~
 git clone https://github.com/nikosChalk/miscellaneous.git
 
 mkdir -p bin
-cp miscellaneous/bin/binaries bin/binaries
+cp -r miscellaneous/bin/binaries bin/binaries
 cp miscellaneous/vim/.vimrc .
 cp miscellaneous/tmux/.tmux.conf.v3.0a .tmux.conf
 cp miscellaneous/gdb/.gdbinit .
@@ -65,6 +72,9 @@ sudo snap install phpstorm --classic
 sudo snap install intellij-idea-ultimate --classic
 sudo snap install pycharm-professional --classic
 sudo snap install webstorm --classic
+
+# Configure git to store username and password
+git config --global credential.helper store
 
 #numpad that works like windows, i.e. shift+home to select whole line, etc.
 # sudoedit /etc/default/keyboard
@@ -96,8 +106,8 @@ echo 'export PATH="$PATH:$GOPATH/bin"' >> .bashrc
 
 #pyenv
 sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
-libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 
 curl https://pyenv.run | bash
 
@@ -141,7 +151,7 @@ pip install --upgrade pip
 pyenv deactivate
 
 # one_gadget
-gem install one_gadget
+sudo gem install one_gadget
 
 #gdb-gef
 pip install capstone unicorn keystone-engine ropper
@@ -158,7 +168,7 @@ cd -
 
 # hyper & hyperpwn
 cd ~/Downloads
-wget https://releases.hyper.is/download/deb hyper.deb
+wget https://releases.hyper.is/download/deb -O hyper.deb
 sudo apt-get -y install gconf-service gconf-service-backend gconf2 gconf2-common libappindicator1 libdbusmenu-gtk4 libgconf-2-4
 sudo dpkg -i hyper.deb
 hyper i hyperinator
@@ -167,6 +177,7 @@ cd -
 
 #libc-database
 git clone https://github.com/niklasb/libc-database.git ~/bin/binaries/libc-database
+sudo apt-get install -y binutils file wget rpm2cpio cpio zstd jq
 cd ~/bin/binaries/libc-database
 ./get all
 cd -
@@ -181,7 +192,7 @@ ln -s $HOME/bin/binaries/checksec/checksec $HOME/bin/checksec
 #ghidra
 sudo apt-get install -y default-jre default-jdk
 # Install ghidra in $HOME/bin/ghidra
-#ln -s $HOME/bin/binaries/ghidra_9.1.2_PUBLIC/ghidraRun $HOME/bin/ghidra
+#ln -s $HOME/bin/binaries/ghidra_10.0.2_PUBLIC/ghidraRun $HOME/bin/ghidra
 
 
 ## VS Code Settings
@@ -197,7 +208,7 @@ sudo apt-get install -y libcanberra-gtk-module
 # Install Burp now
 # Export Certificate in DER format: ~/.BurpSuite/burp-ca.der
 
-# FireFox pen-tester profile
+# FireFox fane-pentest profile
 # Addon: FoxyProxy
 # Addon: Cookie Quick Manager
 # Import CA certificate: ~/.BurpSuite/burp-ca.der 
