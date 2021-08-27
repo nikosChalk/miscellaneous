@@ -66,6 +66,12 @@ sudo snap install intellij-idea-ultimate --classic
 sudo snap install pycharm-professional --classic
 sudo snap install webstorm --classic
 
+#numpad that works like windows, i.e. shift+home to select whole line, etc.
+# sudoedit /etc/default/keyboard
+# Change `XKBOPTIONS=""`
+# to `XKBOPTIONS="numpad:microsoft"`
+# Then run `sudo dpkg-reconfigure keyboard-configuration` and reboot
+
 echo '' >> .bashrc
 echo '##### Automatic nikos installer #####' >> .bashrc
 
