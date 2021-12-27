@@ -1,0 +1,26 @@
+
+https://askubuntu.com/questions/1252275/ubuntu-20-04-cant-persist-the-iptables-configuration
+
+sudo apt-get install dnsmasq iptables-persistent
+
+# Now, we assume that you have a VirtualBox "host-only" interface named "vboxnet1" that covers the subnet 192.168.57.0/24
+# The host-only interface is assumed to not have DHCP, as it was broken when tested with VirtualBox and host-only and Windows guest. So when creating the interface, disable the DHCP server
+
+sudo iptables -A FORWARD -i vboxnet1 -o tun0 --source 192.168.57.0/24 -j ACCEPT
+sudo iptables -A FORWARD -i tun0 -o vboxnet1 --destination 192.168.57.0/24 -j ACCEPT
+sudo iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
+sudo systemctl enable --now dnsmasq.service
+sudo iptables-save | sudo tee /etc/iptables/rules.v4
+
+On the Guest machine:
+  * Disable IPv6
+  * Configure the gateway to 192.168.57.1 and assign an IP, e.g. 192.168.57.3. Configure the DNS to 192.168.57.1
+
+To test, try some pings
+  * ping 192.168.57.1
+  * ping 142.250.179.142 (google.com)
+  * ping google.com
+    * If this one fails but the others succeed, restart dnsmasq: sudo systemctl restart dnsmasq.service
+
+
+
