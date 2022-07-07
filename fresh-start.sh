@@ -12,13 +12,13 @@ sudo timedatectl set-local-rtc 1
 
 sudo apt-get update
 sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla net-tools perl libc6-dbg yara hydra hydra-gtk tree gimp patchelf
-sudo apt install imagemagick nautilus-image-converter
+sudo apt-get install -y imagemagick nautilus-image-converter
 sudo apt-get install -y binutils file wget rpm2cpio cpio zstd build-essential
 sudo apt-get install -y ruby-full ruby-dev rubygems build-essential zlib1g-dev
-sudo apt-get install -y gnome-tweaks gnome-tweak-tool cpu-checker
+sudo apt-get install -y gnome-tweaks gnome-tweaks cpu-checker
 sudo apt-get install -y php php-cgi php-cli php-common php-mysql mysql-server
 sudo apt-get install -y binwalk nmap valgrind
-sudo apt-get install -y qemu virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso
+sudo apt-get install -y qemu qemu-user virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso
 
 #sticky notes
 # http://www.webupd8.org/2012/11/pin-notes-on-your-desktop-with.html
@@ -41,10 +41,11 @@ sudo adduser $USER wireshark
 
 # Docker
 sudo apt-get install -y ca-certificates curl gnupg lsb-release
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo docker run hello-world	# Verify that docker is correctly installed
 sudo groupadd docker
 sudo usermod -aG docker $USER
@@ -110,25 +111,26 @@ echo 'export PATH="$HOME/.gems/bin:$PATH"' >> ~/.bashrc
 #pyenv
 sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+    xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
 
 curl https://pyenv.run | bash
 
 echo '' >> .bashrc
 echo '#pyenv' >> .bashrc
-echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> .bashrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> .bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> .bashrc
 echo 'eval "$(pyenv init -)"' >> .bashrc
-echo 'eval "$(pyenv init --path)"' >> .bashrc
+# echo 'eval "$(pyenv init --path)"' >> .bashrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> .bashrc
 
 echo '' >> .bashrc
 echo 'export PATH="$PATH:/home/$USER/bin"' >> .bashrc
 
 source ~/.bashrc
-pyenv install 3.8.12
-pyenv global  3.8.12
+pyenv install 3.10.5
+pyenv global  3.10.5
 pip install --upgrade pip
-pip install ipython pylint rope matplotlib
+pip install ipython pylint rope matplotlib tqdm
 
 #pwntools
 sudo apt-get -y install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
@@ -146,10 +148,10 @@ pip install pycryptodome hashpumpy
 sudo apt-get install -y python3-dev libffi-dev build-essential
 pyenv virtualenv angr
 pyenv activate angr
+pip install --upgrade pip
 pip install angr
 pip install angr-management
 pip install pylint ipython matplotlib
-pip install --upgrade pip
 pyenv deactivate
 
 # one_gadget
@@ -166,7 +168,7 @@ cargo install pwninit
 
 #gdb-gef
 pip install capstone unicorn keystone-engine ropper
-wget -q -O "$HOME/bin/binaries/.gdbinit-gef.py" https://github.com/hugsy/gef/raw/master/gef.py
+wget -q -O "$HOME/bin/binaries/.gdbinit-gef.py" https://raw.githubusercontent.com/hugsy/gef/main/gef.py
 
 # hyper & hyperpwn
 cd ~/Downloads
@@ -187,14 +189,12 @@ cd -
 #sqlmap
 git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git ~/bin/binaries/sqlmap
 
-#checksec
-git clone https://github.com/slimm609/checksec.sh.git ~/bin/binaries/checksec
-ln -s $HOME/bin/binaries/checksec/checksec $HOME/bin/checksec
-
 #ghidra
 sudo apt-get install -y default-jre default-jdk
+echo ''
+echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64' >> .bashrc
 # Install ghidra in $HOME/bin/ghidra
-#ln -s $HOME/bin/binaries/ghidra_10.1.1_PUBLIC/ghidraRun $HOME/bin/ghidra
+ln -s $HOME/bin/binaries/ghidra_10.1.4_PUBLIC/ghidraRun $HOME/bin/ghidra
 
 
 ## VS Code Settings
