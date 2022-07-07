@@ -11,10 +11,10 @@ set -e
 sudo timedatectl set-local-rtc 1
 
 sudo apt-get update
-sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla net-tools perl libc6-dbg ctags yara hydra hydra-gtk tree
+sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla net-tools perl libc6-dbg yara hydra hydra-gtk tree gimp patchelf
 sudo apt install imagemagick nautilus-image-converter
 sudo apt-get install -y binutils file wget rpm2cpio cpio zstd build-essential
-sudo apt-get install -y ruby rubygems build-essential
+sudo apt-get install -y ruby-full ruby-dev rubygems build-essential zlib1g-dev
 sudo apt-get install -y gnome-tweaks gnome-tweak-tool cpu-checker
 sudo apt-get install -y php php-cgi php-cli php-common php-mysql mysql-server
 sudo apt-get install -y binwalk nmap valgrind
@@ -94,6 +94,11 @@ echo '' >> .bashrc
 echo 'export VISUAL=vim' >> .bashrc
 echo 'export EDITOR="$VISUAL"' >> .bashrc
 
+#ruby gems
+echo '# Install Ruby Gems to ~/.gems' >> ~/.bashrc
+echo 'export GEM_HOME="$HOME/.gems"' >> ~/.bashrc
+echo 'export PATH="$HOME/.gems/bin:$PATH"' >> ~/.bashrc
+
 #go
 # echo '' >> .bashrc
 # echo '#go language' >> .bashrc
@@ -148,7 +153,16 @@ pip install --upgrade pip
 pyenv deactivate
 
 # one_gadget
-sudo gem install one_gadget
+gem install one_gadget
+gem install jekyll bundler
+gem install seccomp-tools
+
+# rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source $HOME/.cargo/env
+
+#pwninit
+cargo install pwninit
 
 #gdb-gef
 pip install capstone unicorn keystone-engine ropper
