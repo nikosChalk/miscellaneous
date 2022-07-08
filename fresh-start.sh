@@ -11,7 +11,7 @@ set -e
 sudo timedatectl set-local-rtc 1
 
 sudo apt-get update
-sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop chromium-browser filezilla net-tools perl libc6-dbg yara hydra hydra-gtk tree gimp patchelf
+sudo apt-get install -y vim git gcc g++ cmake make gedit ssh gdb gdb-multiarch tmux xclip python3 curl wget glibc-doc manpages-posix manpages-posix-dev htop filezilla net-tools perl libc6-dbg yara hydra hydra-gtk tree gimp patchelf
 sudo apt-get install -y imagemagick nautilus-image-converter
 sudo apt-get install -y binutils file wget rpm2cpio cpio zstd build-essential
 sudo apt-get install -y ruby-full ruby-dev rubygems build-essential zlib1g-dev
@@ -227,5 +227,7 @@ ln -s $HOME/bin/binaries/burpsuite-pro-v2021.8.4/run.sh $HOME/bin/burp
 # Addon: FoxyProxy
 # Addon: Cookie Quick Manager
 # Import CA certificate: ~/.BurpSuite/burp-ca.der
+
+# Also install Chrome
 
 
